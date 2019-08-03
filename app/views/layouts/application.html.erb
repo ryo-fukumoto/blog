@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Miniblog</title>
+  <style type="text/css" href="./style.css"></style>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  
+
+     <nav class="blue lighten-2">
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo center">blogblog
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+        <div class="user_nav grid-6">
+        <li><a class="post" href="/tweets/new">投稿する</a></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        </div>
+      <% else %>
+        <div class="grid-6">
+          <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+          <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+        </div>
+      <% end %>
+          </ul>
+        </div>
+      </nav>
+
+</head>
+
+<body>
+<h2>ブログ一覧</h2>
+<%= yield %>
+</body>
+
+</html>
